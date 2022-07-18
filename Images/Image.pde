@@ -19,7 +19,7 @@ PImage pic;
 size (750, 500); //Landscape
 //
 //Population
-pic= loadImage();
+pic= loadImage("");
 imageX = width*0;
 imageY = height*0;
 imageWidth = width;
