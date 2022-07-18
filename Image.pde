@@ -13,7 +13,7 @@
 
 
 //Static to copy
-float imageX, imageY, imageWidth, imageHeight;
+float imageX, imageY, imageWidth, imageHeight, picWidthAdjusted, picHeightAdjusted;
 float imageLargerDimension, imageSmallerDimension;
 PImage pic;
 //
@@ -43,4 +43,4 @@ imageHeight = height-1;
 rect(imageX, imageY, imageWidth, imageHeight);
 image(pic, imageX, imageY, imageWidth, imageHeight);
 image(pic, imageX, imageY, picWidthAdjusted, picHeightAdjusted);
-//image(brain.jpeg);
+//image();
