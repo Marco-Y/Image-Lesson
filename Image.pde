@@ -16,6 +16,7 @@
 float imageX, imageY, imageWidth, imageHeight, picWidthAdjusted, picHeightAdjusted;
 float imageLargerDimension, imageSmallerDimension;
 PImage pic;
+Boolean widthLarger=false, heightLarger=false;
 //
 //CANVAS
 size (750, 500); //Landscape
@@ -30,10 +31,12 @@ if ( picWidth >= picHeight ) {
   //True if Landscape or Square 
   imageLargerDimension = picWidth;
   imageSmallerDimension = picHeight;
+  widthLarger = true;
 } else {
   //False if Portrait
   imageLargerDimension = picHeight;
   imageSmallerDimension = picWidth;
+  heightLarger = true;
 } //End Image Dimension Comparison
 println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger); //Verify variables details
 //
@@ -41,13 +44,14 @@ println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger);
 //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
 //Computer chooses which formulae to execute
 if ( widthLarger == true ) imageWidthRatio = imageLargerDimension / imageLargerDimension;
-if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension / imageSmallerDimension;
-if () ;
-if () ;
+if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
+if ( heightLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
+if ( heightLarger == true ) imageHeightRatio = imageLargerDimension / imageLargerDimension;
 //Note:
 //Answers must be between 0 & 1 (decimal)
 //Ratio 1.0 similar to style="width: 100%"
 //Ratio of 0-1 similar to style="height: auto"
+//
 //Note: println also verifies decimal places, complier will truncate
 //
 imageX = width*0;
