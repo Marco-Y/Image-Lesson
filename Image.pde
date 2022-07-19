@@ -13,7 +13,7 @@
 
 
 //Static to copy
-float imageX, imageY, imageWidth, imageHeight, picWidthAdjusted, picHeightAdjusted;
+float imageX, imageY, imageWidth, imageHeight, imageWidthRatio, imageHeightRatio, picWidthAdjusted, picHeightAdjusted;
 float imageLargerDimension, imageSmallerDimension;
 PImage pic;
 Boolean widthLarger=false, heightLarger=false;
@@ -45,7 +45,7 @@ println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger);
 //Computer chooses which formulae to execute
 if ( widthLarger == true ) imageWidthRatio = imageLargerDimension / imageLargerDimension;
 if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
-if ( heightLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
+if ( heightLarger == true ) imageWidthRatio = imageSmallerDimension / imageLargerDimension;
 if ( heightLarger == true ) imageHeightRatio = imageLargerDimension / imageLargerDimension;
 //Note:
 //Answers must be between 0 & 1 (decimal)
@@ -58,6 +58,13 @@ imageX = width*0;
 imageY = height*0;
 imageWidth = width-1; //CANVAS (0,0) means point doesn't match to rectangle, missing outline on 2 sides
 imageHeight = height-1;
+//
+//Adjusted Image Variables for Aspect Ratio: entire image will be smaller due to aspect ratio
+float picWidthAdjusted, picHeightAdjusted;
+picWidthAdjusted = float(width)*imageWidthRatio;
+picHeightAdjusted = height*imageHeightRatio;
+//
+//Note: println also verifies decimal places, complier will truncate
 //
 rect(imageX, imageY, imageWidth, imageHeight);
 image(pic, imageX, imageY, imageWidth, imageHeight);
