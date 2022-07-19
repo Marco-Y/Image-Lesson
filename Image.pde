@@ -1,45 +1,61 @@
 //Global Variables
+float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
+float imageLargerDimension, imageSmallerDimension;
+PImage pic;
+Boolean widthLarger=false, heightLarger=false;
 //
-//void setup() {}//End setup
+void setup() {
+  //CANVAS
+  size (750, 500); //Landscape
+  //
+  //Population
+  pic= loadImage("Images/Landscape & Square/brain.jpeg"); //Dimensions: width 800, height 450
+  //Dimensions found by right click image / get info
+  //Algorithm: Find the larger dimension for aspect ratio (comparison of two numbers)
+  int picWidth = 800;
+  int picHeight = 450;
+  //
+  if ( picWidth >= picHeight ) {
+    //True if Landscape or Square
+    imageLargerDimension = picWidth;
+    imageSmallerDimension = picHeight;
+    widthLarger = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension = picHeight;
+    imageSmallerDimension = picWidth;
+    heightLarger = true;
+  } //End Image Dimension Comparison
+  println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger); //Verify variables details
+  //
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
+  //Computer chooses which formulae to execute
+  if ( widthLarger == true ) imageWidthRatio = imageLargerDimension / imageLargerDimension;
+  if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
+  if ( heightLarger == true ) imageWidthRatio = imageSmallerDimension / imageLargerDimension;
+  if ( heightLarger == true ) imageHeightRatio = imageLargerDimension / imageLargerDimension;
+  //Note:
+  //Answers must be between 0 & 1 (decimal)
+  //Ratio 1.0 similar to style="width: 100%"
+  //Ratio of 0-1 similar to style="height: auto"
+  //
+}//End setup
 //
-//void draw() {}//End draw
+void draw() {
+}//End draw
 //
-//void keyPressed() {}//End keyPressed
+void keyPressed() {
+}//End keyPressed
 //
-//void mousePressed() {}//End mousePressed
+void mousePressed() {
+}//End mousePressed
 //
 //End MAIN Program
 
 
 
 //Static to copy
-float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
-float imageLargerDimension, imageSmallerDimension;
-PImage pic;
-Boolean widthLarger=false, heightLarger=false;
-//
-//CANVAS
-size (750, 500); //Landscape
-//
-//Population
-pic= loadImage("Images/Landscape & Square/brain.jpeg"); //Dimensions: width 800, height 450
-//Dimensions found by right click image / get info
-//Algorithm: Find the larger dimension for aspect ratio (comparison of two numbers)
-int picWidth = 800;
-int picHeight = 450;
-if ( picWidth >= picHeight ) {
-  //True if Landscape or Square 
-  imageLargerDimension = picWidth;
-  imageSmallerDimension = picHeight;
-  widthLarger = true;
-} else {
-  //False if Portrait
-  imageLargerDimension = picHeight;
-  imageSmallerDimension = picWidth;
-  heightLarger = true;
-} //End Image Dimension Comparison
-println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger); //Verify variables details
-//
 //Aspect Ratio
 //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
 //Computer chooses which formulae to execute
