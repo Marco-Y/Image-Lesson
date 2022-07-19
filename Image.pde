@@ -1,7 +1,7 @@
 //Global Variables
 float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
 float imageLargerDimension, imageSmallerDimension;
-PImage pic;
+PImage pic1, pic2;
 Boolean widthLarger=false, heightLarger=false;
 //
 void setup() {
@@ -13,8 +13,10 @@ void setup() {
   pic2= loadImage("Images/Landscape & Square/bike.png"); //Dimensions: width 605, height 605
   //Dimensions found by right click image / get info
   //Algorithm: Find the larger dimension for aspect ratio (comparison of two numbers)
-  int picWidth = 800;
-  int picHeight = 450;
+  int picWidth1 = 800;
+  int picHeight1 = 450;
+  int picWidth2 = 605;
+  int picHeight2 = 605;
   //
   if ( picWidth >= picHeight ) {
     //True if Landscape or Square
