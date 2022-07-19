@@ -1,8 +1,10 @@
 //Global Variables
-float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
-float imageLargerDimension, imageSmallerDimension;
+float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1;
+float imageX2, imageY2, imageWidth2, imageHeight2, imageLargerDimension2, imageSmallerDimension2;
+float imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
 PImage pic1, pic2;
-Boolean widthLarger=false, heightLarger=false;
+Boolean widthLarger1=false, heightLarger1=false;
+Boolean widthLarger2=false, heightLarger2=false;
 //
 void setup() {
   //CANVAS
@@ -18,16 +20,16 @@ void setup() {
   int picWidth2 = 605;
   int picHeight2 = 605;
   //
-  if ( picWidth >= picHeight ) {
+  if ( picWidth1 >= picHeight1 ) {
     //True if Landscape or Square
-    imageLargerDimension = picWidth;
-    imageSmallerDimension = picHeight;
+    imageLargerDimension1 = picWidth1;
+    imageSmallerDimension1 = picHeight1;
     widthLarger = true;
   } else {
     //False if Portrait
-    imageLargerDimension = picHeight;
-    imageSmallerDimension = picWidth;
-    heightLarger = true;
+    imageLargerDimension1 = picHeight1;
+    imageSmallerDimension1 = picWidth1;
+    heightLarger1 = true;
   } //End Image Dimension Comparison
   //Note: println also verifies decimal places, complier will truncate
   println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger); //Verify variables details
@@ -45,10 +47,14 @@ void setup() {
   //Ratio of 0-1 similar to style="height: auto"
   //
   //Population of Rect()
-  imageX = width*0;
-  imageY = height*0;
-  imageWidth = width-1; //CANVAS (0,0) means point doesn't match to rectangle, missing outline on 2 sides
-  imageHeight = height-1;
+  imageX1 = width*0;
+  imageY1 = height*0;
+  imageWidth1 = width-1; //CANVAS (0,0) means point doesn't match to rectangle, missing outline on 2 sides
+  imageHeight1 = (height-1)*1/2;
+  imageX2 = width*0;
+  imageY2 = height*1/2;
+  imageWidth2 = width-1; //CANVAS (0,0) means point doesn't match to rectangle, missing outline on 2 sides
+  imageHeight2 = (height-1)*1/2;
   //
   //Combination of Population of Image with Population of Rect()
   //Adjusted Image Variables for Aspect Ratio: entire image will be smaller due to aspect ratio
@@ -58,8 +64,9 @@ void setup() {
 }//End setup
 //
 void draw() {
-  rect(imageX, imageY, imageWidth, imageHeight);
-  //image(pic, imageX, imageY, imageWidth, imageHeight);
+  rect(imageX1, imageY1, imageWidth1, imageHeight1);//Top half of CANVAS
+  rect(imageX2, imageY2, imageWidth2, imageHeight2);//Bottom half of CANVAS
+  image(pic, imageX, imageY, imageWidth, imageHeight);
   image(pic, imageX, imageY, picWidthAdjusted, picHeightAdjusted);
   //image();
 }//End draw
