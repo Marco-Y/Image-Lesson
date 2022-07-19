@@ -1,6 +1,6 @@
 //Global Variables
-float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1;
-float imageX2, imageY2, imageWidth2, imageHeight2, imageLargerDimension2, imageSmallerDimension2;
+float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
+float imageX2, imageY2, imageWidth2, imageHeight2, imageLargerDimension2, imageSmallerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
 float imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
 PImage pic1, pic2;
 Boolean widthLarger1=false, heightLarger1=false;
@@ -24,7 +24,7 @@ void setup() {
     //True if Landscape or Square
     imageLargerDimension1 = picWidth1;
     imageSmallerDimension1 = picHeight1;
-    widthLarger = true;
+    widthLarger1 = true;
   } else {
     //False if Portrait
     imageLargerDimension1 = picHeight1;
@@ -32,7 +32,7 @@ void setup() {
     heightLarger1 = true;
   } //End Image Dimension Comparison
   //Note: println also verifies decimal places, complier will truncate
-  println(imageSmallerDimension, imageLargerDimension, widthLarger, heightLarger); //Verify variables details
+  println(imageSmallerDimension1, imageLargerDimension1, widthLarger1, heightLarger1); //Verify variables details
   //
   //Aspect Ratio
   //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
@@ -66,8 +66,8 @@ void setup() {
 void draw() {
   rect(imageX1, imageY1, imageWidth1, imageHeight1);//Top half of CANVAS
   rect(imageX2, imageY2, imageWidth2, imageHeight2);//Bottom half of CANVAS
-  image(pic, imageX, imageY, imageWidth, imageHeight);
-  image(pic, imageX, imageY, picWidthAdjusted, picHeightAdjusted);
+  image(pic1, imageX1, imageY1, imageWidth1, imageHeight1);
+  image(pic2, imageX2, imageY2, picWidthAdjusted, picHeightAdjusted);
   //image();
 }//End draw
 //
