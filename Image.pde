@@ -13,7 +13,7 @@
 
 
 //Static to copy
-float imageX, imageY, imageWidth, imageHeight, imageWidthRatio, imageHeightRatio, picWidthAdjusted, picHeightAdjusted;
+float imageX, imageY, imageWidth, imageHeight, imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
 float imageLargerDimension, imageSmallerDimension;
 PImage pic;
 Boolean widthLarger=false, heightLarger=false;
@@ -60,13 +60,12 @@ imageWidth = width-1; //CANVAS (0,0) means point doesn't match to rectangle, mis
 imageHeight = height-1;
 //
 //Adjusted Image Variables for Aspect Ratio: entire image will be smaller due to aspect ratio
-float picWidthAdjusted, picHeightAdjusted;
 picWidthAdjusted = float(width)*imageWidthRatio;
 picHeightAdjusted = height*imageHeightRatio;
 //
 //Note: println also verifies decimal places, complier will truncate
 //
 rect(imageX, imageY, imageWidth, imageHeight);
-image(pic, imageX, imageY, imageWidth, imageHeight);
+//image(pic, imageX, imageY, imageWidth, imageHeight);
 image(pic, imageX, imageY, picWidthAdjusted, picHeightAdjusted);
 //image();
