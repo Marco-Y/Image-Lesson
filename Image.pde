@@ -1,6 +1,8 @@
 //Global Variables
 float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
+float picWidthAdjusted1, picHeightAdjusted1;
 float imageX2, imageY2, imageWidth2, imageHeight2, imageLargerDimension2, imageSmallerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
+float picWidthAdjusted2, picHeightAdjusted2;
 float imageWidthRatio=0.0, imageHeightRatio=0.0, picWidthAdjusted, picHeightAdjusted; //Floats need decimals
 PImage pic1, pic2;
 Boolean widthLarger1=false, heightLarger1=false;
@@ -37,15 +39,36 @@ void setup() {
   //Aspect Ratio
   //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
   //Computer chooses which formulae to execute
-  if ( widthLarger == true ) imageWidthRatio = imageLargerDimension / imageLargerDimension;
-  if ( widthLarger == true ) imageHeightRatio = imageSmallerDimension / imageLargerDimension;
-  if ( heightLarger == true ) imageWidthRatio = imageSmallerDimension / imageLargerDimension;
-  if ( heightLarger == true ) imageHeightRatio = imageLargerDimension / imageLargerDimension;
+  if ( widthLarger1 == true ) imageWidthRatio = imageLargerDimension1 / imageLargerDimension1;
+  if ( widthLarger1 == true ) imageHeightRatio = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageWidthRatio = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageHeightRatio = imageLargerDimension1 / imageLargerDimension1;
   //Note:
   //Answers must be between 0 & 1 (decimal)
   //Ratio 1.0 similar to style="width: 100%"
   //Ratio of 0-1 similar to style="height: auto"
   //
+    if ( picWidth2 >= picHeight2 ) {
+    //True if Landscape or Square
+    imageLargerDimension2 = picWidth2;
+    imageSmallerDimension2 = picHeight2;
+    widthLarger2 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension2 = picHeight2;
+    imageSmallerDimension2 = picWidth2;
+    heightLarger2 = true;
+  } //End Image Dimension Comparison
+  //Note: println also verifies decimal places, complier will truncate
+  println(imageSmallerDimension2, imageLargerDimension2, widthLarger2, heightLarger2); //Verify variables details
+  //
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ELSEIF-ELSE
+  //Computer chooses which formulae to execute
+  if ( widthLarger2 == true ) imageWidthRatio = imageLargerDimension2 / imageLargerDimension2;
+  if ( widthLarger2 == true ) imageHeightRatio = imageSmallerDimension2 / imageLargerDimension2;
+  if ( heightLarger2 == true ) imageWidthRatio = imageSmallerDimension2 / imageLargerDimension2;
+  if ( heightLarger2 == true ) imageHeightRatio = imageLargerDimension2 / imageLargerDimension2;
   //Population of Rect()
   imageX1 = width*0;
   imageY1 = height*0;
@@ -58,8 +81,12 @@ void setup() {
   //
   //Combination of Population of Image with Population of Rect()
   //Adjusted Image Variables for Aspect Ratio: entire image will be smaller due to aspect ratio
-  picWidthAdjusted = float(width)*imageWidthRatio;
-  picHeightAdjusted = height*imageHeightRatio;
+  picWidthAdjusted1 = float(width)*imageWidthRatio;
+  picHeightAdjusted1 = height*imageHeightRatio;
+  println(imageX1, imageY1, picWidthAdjusted1, picHeightAdjusted1); //Note: println also verifies decimal places, complier will truncate
+  picWidthAdjusted2 = float(width)*imageWidthRatio;
+  picHeightAdjusted2 = height*imageHeightRatio;
+  println(imageX2, imageY2, picWidthAdjusted2, picHeightAdjusted2); //Note: println also verifies decimal places, complier will truncate
   //
 }//End setup
 //
@@ -67,7 +94,7 @@ void draw() {
   rect(imageX1, imageY1, imageWidth1, imageHeight1);//Top half of CANVAS
   rect(imageX2, imageY2, imageWidth2, imageHeight2);//Bottom half of CANVAS
   image(pic1, imageX1, imageY1, imageWidth1, imageHeight1);
-  image(pic2, imageX2, imageY2, picWidthAdjusted, picHeightAdjusted);
+  image(pic2, imageX2, imageY2, picWidthAdjusted2, picHeightAdjusted2);
   //image();
 }//End draw
 //
